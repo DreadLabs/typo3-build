@@ -1,0 +1,11 @@
+.buildpath
+.project
+.idea
+.settings
+vendor
+build/
+bower_components/
+node_modules/
+build.*.secret.properties
+
+/web/

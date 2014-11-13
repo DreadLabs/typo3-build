@@ -1,0 +1,40 @@
+{
+    "name" : "dreadlabs/typo3-build",
+    "description" : "A project for building and deploying TYPO3.CMS project.",
+    "type" : "library",
+    "keywords" : [
+        "typo3",
+        "typo3 cms",
+        "phing",
+        "build",
+        "project automation",
+        "build automation"
+    ],
+    "homepage" : "http://www.van-tomas.de/",
+    "license" : "GPL-2.0",
+    "authors" : [
+        {
+            "name" : "Thomas Juhnke",
+            "email" : "typo3@van-tomas.de",
+            "role" : "Developer"
+        }
+    ],
+    "require" : {
+        "php" : ">=5.4.4"
+    },
+    "require-dev" : {
+        "phing/phing" : "~2.7",
+        "phpunit/phpunit" : "~4.0",
+        "phpmd/phpmd" : "~1.5",
+        "pdepend/pdepend" : "~1.1",
+        "phploc/phploc" : "~2.0",
+        "squizlabs/php_codesniffer" : "~1.5",
+        "typo3-ci/typo3sniffpool" : "1.0.0-alpha",
+        "typo3-ci/typo3cms" : "1.0.0-alpha",
+        "sebastian/phpcpd" : "~2.0"
+    },
+    "config" : {
+        "preferred-install" : "dist"
+    },
+    "minimum-stability" : "stable"
+}

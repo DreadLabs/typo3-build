@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="qa" default="qa:run">
+
+	<target name="qa:prepare" unless="releasing">
+		<mkdir dir="${application.startdir}/build/phpunit-coverage" />
+	</target>
+
+	<target name="qa:phpmd"
+			description="Runs phpmd on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/phpmd" />
+			<arg value="${application.startdir}/src/" />
+			<arg value="xml" />
+			<arg value="codesize,unusedcode,naming,design" />
+			<arg line="--reportfile ${application.startdir}/build/phpmd.xml" />
+			<arg line="--suffixes php" />
+		</exec>
+	</target>
+
+	<target name="qa:pdepend"
+			description="Runs pdepend on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/pdepend" />
+			<arg line="--jdepend-chart=${application.startdir}/build/jdepend.svg" />
+			<arg line="--jdepend-xml=${application.startdir}/build/jdepend.xml" />
+			<arg line="--overview-pyramid=${application.startdir}/build/jdepend-pyramid.svg" />
+			<arg line="--summary-xml=${application.startdir}/build/pdepend-summary.xml" />
+			<arg line="--suffix=php" />
+			<arg value="${application.startdir}/src/" />
+		</exec>
+	</target>
+
+	<target name="qa:phploc"
+			description="Runs phploc on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/phploc" />
+			<arg line="--names=*.php" />
+			<arg line="--log-csv=${application.startdir}/build/phploc.csv" />
+			<arg line="--log-xml=${application.startdir}/build/phploc.xml" />
+			<arg line="--progress " />
+			<arg value="${application.startdir}/src/" />
+		</exec>
+	</target>
+
+	<target name="qa:phpcpd"
+			description="Runs phpcpd on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/phpcpd" />
+			<arg line="--names=*.php" />
+			<arg line="--names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php" />
+			<arg line="--log-pmd=${application.startdir}/build/phpcpd.xml" />
+			<arg line="--progress" />
+			<arg value="${application.startdir}/src/" />
+		</exec>
+	</target>
+
+	<target name="qa:phpcs"
+			description="Runs phpcs on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/phpcs" />
+			<arg line="-np" />
+			<arg line="--report=checkstyle" />
+			<arg line="--report-checkstyle=${application.startdir}/build/phpcs-checkstyle.xml" />
+			<arg line="--standard=TYPO3CMS" />
+			<arg line="--ignore=**/vendor/**" />
+			<arg line="-d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED'" />
+			<arg line="--extensions=php" />
+			<arg value="${application.startdir}/src/" />
+		</exec>
+	</target>
+
+	<target name="qa:phpunit"
+			description="Runs phpunit on src/"
+			depends="qa:prepare"
+			unless="releasing">
+
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="true"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/phpunit" />
+			<arg line="-c ${application.startdir}/phpunit.dist.xml" />
+		</exec>
+	</target>
+
+	<target name="qa:run"
+			description="Runs the QA toolchain"
+			depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit"
+			unless="releasing">
+
+		<echo>QA toolchain ready.</echo>
+	</target>
+</project>
