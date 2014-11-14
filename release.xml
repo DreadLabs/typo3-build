@@ -170,6 +170,7 @@
 			<arg value="${project.basedir}/vendor/bin/phing" />
 			<arg line="-Denvironment=${release.target}" />
 			<arg line="-Dreleasing=1" />
+			<arg line="-Dimport.dir=${application.startdir}" />
 		</exec>
 	</target>
 </project>
