@@ -6,7 +6,7 @@
 	</target>
 
 	<target name="qa:phpmd"
-			description="Runs phpmd on src/"
+			description="Runs phpmd on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 
@@ -17,7 +17,7 @@
 
 			<arg value="php" />
 			<arg value="${application.startdir}/vendor/bin/phpmd" />
-			<arg value="${application.startdir}/src/" />
+			<arg value="${application.startdir}/web/typo3conf/ext/" />
 			<arg value="xml" />
 			<arg value="codesize,unusedcode,naming,design" />
 			<arg line="--reportfile ${application.startdir}/build/phpmd.xml" />
@@ -26,7 +26,7 @@
 	</target>
 
 	<target name="qa:pdepend"
-			description="Runs pdepend on src/"
+			description="Runs pdepend on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 
@@ -42,12 +42,12 @@
 			<arg line="--overview-pyramid=${application.startdir}/build/jdepend-pyramid.svg" />
 			<arg line="--summary-xml=${application.startdir}/build/pdepend-summary.xml" />
 			<arg line="--suffix=php" />
-			<arg value="${application.startdir}/src/" />
+			<arg value="${application.startdir}/web/typo3conf/ext/" />
 		</exec>
 	</target>
 
 	<target name="qa:phploc"
-			description="Runs phploc on src/"
+			description="Runs phploc on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 
@@ -62,12 +62,12 @@
 			<arg line="--log-csv=${application.startdir}/build/phploc.csv" />
 			<arg line="--log-xml=${application.startdir}/build/phploc.xml" />
 			<arg line="--progress " />
-			<arg value="${application.startdir}/src/" />
+			<arg value="${application.startdir}/web/typo3conf/ext/" />
 		</exec>
 	</target>
 
 	<target name="qa:phpcpd"
-			description="Runs phpcpd on src/"
+			description="Runs phpcpd on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 
@@ -82,12 +82,12 @@
 			<arg line="--names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php" />
 			<arg line="--log-pmd=${application.startdir}/build/phpcpd.xml" />
 			<arg line="--progress" />
-			<arg value="${application.startdir}/src/" />
+			<arg value="${application.startdir}/web/typo3conf/ext/" />
 		</exec>
 	</target>
 
 	<target name="qa:phpcs"
-			description="Runs phpcs on src/"
+			description="Runs phpcs on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 
@@ -105,12 +105,12 @@
 			<arg line="--ignore=**/vendor/**" />
 			<arg line="-d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED'" />
 			<arg line="--extensions=php" />
-			<arg value="${application.startdir}/src/" />
+			<arg value="${application.startdir}/web/typo3conf/ext/" />
 		</exec>
 	</target>
 
 	<target name="qa:phpunit"
-			description="Runs phpunit on src/"
+			description="Runs phpunit on web/typo3conf/ext/"
 			depends="qa:prepare"
 			unless="releasing">
 

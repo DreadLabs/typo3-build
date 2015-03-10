@@ -18,9 +18,18 @@
 
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
-				<include name="*.*" />
-				<include name="typo3/**" />
-				<include name="typo3conf/ext/**" />
+				<include name="bin/**" />
+				<include name="Packages/**" />
+				<include name="typo3" />
+				<include name="typo3_src/**" />
+				<include name="typo3conf/AdditionalConfiguration.php" />
+				<include name="typo3conf/ENABLE_INSTALL_TOOL" />
+				<include name="typo3conf/LocalConfiguration.php" />
+				<include name="typo3conf/l10n/**" />
+				<include name="typo3temp/**" />
+				<include name=".htaccess" />
+				<include name="index.php" />
+				<include name="robots.txt" />
 			</fileset>
 		</delete>
 	</target>

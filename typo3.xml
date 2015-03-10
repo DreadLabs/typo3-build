@@ -5,53 +5,32 @@
 			description="Prepares the TYPO3.CMS directory structure for user data">
 
 		<mkdir dir="${distDir}/fileadmin/user_upload" />
-		<mkdir dir="${distDir}/typo3conf/ext" />
 		<mkdir dir="${distDir}/typo3conf/l10n" />
 		<mkdir dir="${distDir}/typo3temp" />
 		<mkdir dir="${distDir}/uploads/media" />
 		<mkdir dir="${distDir}/uploads/pics" />
 	</target>
 
-	<target name="typo3:copy-core"
+	<target name="typo3:install-core"
 			description="Copies the TYPO3 core into the release directory."
 			depends="typo3:prepare">
 
-		<copy todir="${distDir}" overwrite="true">
-			<fileset dir="${application.startdir}/vendor/typo3/cms/">
-				<include name="typo3/**" />
-				<include name="index.php" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
+		<exec
+			dir="${distDir}"
+			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php ../composer.phar install --no-dev" />
 	</target>
 
-	<target name="typo3:copy-extensions:vendor"
-			description="Copies the vendor extension into the typo3conf/ext/ release directory"
+	<target name="typo3:project-extensions:prepare"
+			description="Prepares the project extensions in the typo3conf/ext/ release directory"
 			depends="typo3:prepare">
 
-		<copy todir="${distDir}/typo3conf/ext">
-			<fileset dir="${application.startdir}/vendor/typo3-cms-extension">
-				<include name="**/**" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target name="typo3:copy-extensions:project"
-			description="Copies the project extensions into the typo3conf/ext/ release directory"
-			depends="typo3:prepare">
-
-		<copy todir="${application.startdir}/src/" overwrite="true">
+		<copy todir="${application.startdir}/web/typo3conf/ext/" overwrite="true">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
 			<filterchain>
 				<expandproperties />
 			</filterchain>
 
-			<fileset dir="${application.startdir}/src">
+			<fileset dir="${application.startdir}/web/typo3conf/ext/">
 				<include name="**/**" />
 
 				<exclude name="**/.git*" />
@@ -65,29 +44,12 @@
 				<phingcall target="${typo3.copy-extensions.project.preCopyDist}" />
 			</then>
 		</if>
-
-		<copy todir="${distDir}/typo3conf/ext" overwrite="true">
-			<fileset dir="${application.startdir}/src">
-				<include name="**/**" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/*.tpl.*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target name="typo3:copy-extensions"
-			description="Copies the extensions into typo3conf/ext/ release directory"
-			depends="typo3:copy-extensions:vendor, typo3:copy-extensions:project">
-
-		<echo>Extensions copied.</echo>
 	</target>
 
 	<target name="typo3:run"
-			description="Compiles the TYPO3.CMS core + extensions into the release directory."
-			depends="typo3:copy-core, typo3:copy-extensions">
+			description="Installs the TYPO3.CMS core + prepares extensions in the release directory."
+			depends="typo3:install-core, typo3:project-extensions:prepare">
 
-		<echo>TYPO3.CMS compilation finished.</echo>
+		<echo>TYPO3.CMS setup finished.</echo>
 	</target>
 </project>
