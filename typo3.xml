@@ -23,13 +23,13 @@
 	<target name="typo3:configure-core"
 			description="Configures the core according to the configuration templates">
 
-		<copy todir="${application.startdir}/web/typo3conf/ext/" overwrite="true">
+		<copy todir="${application.startdir}/web/typo3conf/" overwrite="true">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
 			<filterchain>
 				<expandproperties />
 			</filterchain>
 
-			<fileset dir="${applicaiton.startdir}/web/typo3conf/">
+			<fileset dir="${application.startdir}/web/typo3conf/">
 				<include name="*.tpl.*" />
 			</fileset>
 		</copy>
