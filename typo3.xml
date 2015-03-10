@@ -20,6 +20,21 @@
 			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php ../composer.phar install --no-dev" />
 	</target>
 
+	<target name="typo3:configure-core"
+			description="Configures the core according to the configuration templates">
+
+		<copy todir="${application.startdir}/web/typo3conf/ext/" overwrite="true">
+			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+
+			<fileset dir="${applicaiton.startdir}/web/typo3conf/">
+				<include name="*.tpl.*" />
+			</fileset>
+		</copy>
+	</target>
+
 	<target name="typo3:project-extensions:prepare"
 			description="Prepares the project extensions in the typo3conf/ext/ release directory"
 			depends="typo3:prepare">
@@ -48,7 +63,7 @@
 
 	<target name="typo3:run"
 			description="Installs the TYPO3.CMS core + prepares extensions in the release directory."
-			depends="typo3:install-core, typo3:project-extensions:prepare">
+			depends="typo3:install-core, typo3:configure-core, typo3:project-extensions:prepare">
 
 		<echo>TYPO3.CMS setup finished.</echo>
 	</target>
