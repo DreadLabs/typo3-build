@@ -141,10 +141,16 @@
 			command="curl -sS https://getcomposer.org/installer | php"
 			passthru="true" />
 
-		<echo>Installing dependencies</echo>
+		<echo>Installing dependencies - project</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev --no-plugins"
+			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev"
+			passthru="true" />
+
+		<echo>Installing dependencies - TYPO3</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev"
 			passthru="true" />
 
 		<if>
