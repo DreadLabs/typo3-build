@@ -19,7 +19,7 @@
 
 			<arg value="php" />
 			<arg value="${application.startdir}/vendor/bin/phpmd" />
-			<arg value="${qa.paths.phpmd}" />
+			<arg line="${qa.paths.phpmd}" />
 			<arg value="xml" />
 			<arg value="codesize,unusedcode,naming,design" />
 			<arg line="--reportfile ${application.startdir}/build/phpmd.xml" />
@@ -46,7 +46,7 @@
 			<arg line="--overview-pyramid=${application.startdir}/build/jdepend-pyramid.svg" />
 			<arg line="--summary-xml=${application.startdir}/build/pdepend-summary.xml" />
 			<arg line="--suffix=php" />
-			<arg value="${qa.paths.pdepend}" />
+			<arg line="${qa.paths.pdepend}" />
 		</exec>
 	</target>
 
@@ -68,7 +68,7 @@
 			<arg line="--log-csv=${application.startdir}/build/phploc.csv" />
 			<arg line="--log-xml=${application.startdir}/build/phploc.xml" />
 			<arg line="--progress " />
-			<arg value="${qa.paths.phploc}" />
+			<arg line="${qa.paths.phploc}" />
 		</exec>
 	</target>
 
@@ -90,7 +90,7 @@
 			<arg line="--names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php" />
 			<arg line="--log-pmd=${application.startdir}/build/phpcpd.xml" />
 			<arg line="--progress" />
-			<arg value="${qa.paths.phpcpd}" />
+			<arg line="${qa.paths.phpcpd}" />
 		</exec>
 	</target>
 
@@ -115,7 +115,7 @@
 			<arg line="--ignore=**/vendor/**" />
 			<arg line="-d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED'" />
 			<arg line="--extensions=php" />
-			<arg value="${application.startdir}/web/typo3conf/ext/" />
+			<arg line="${qa.paths.phpcs}" />
 		</exec>
 	</target>
 
