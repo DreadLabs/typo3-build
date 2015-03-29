@@ -25,6 +25,22 @@
 			<arg line="--reportfile ${application.startdir}/build/phpmd.xml" />
 			<arg line="--suffixes php" />
 		</exec>
+
+		<if>
+			<isset property="qa.reports.phpmd" />
+			<then>
+				<exec
+					executable="/usr/bin/env"
+					checkreturn="false"
+					passthru="true"
+					output="${application.startdir}/build/phpmd.html">
+
+					<arg value="xsltproc" />
+					<arg line="${phing.dir.build}/xslt/${qa.reports.phpmd}.xslt" />
+					<arg line="${application.startdir}/build/phpmd.xml" />
+				</exec>
+			</then>
+		</if>
 	</target>
 
 	<target name="qa:pdepend"
@@ -48,6 +64,22 @@
 			<arg line="--suffix=php" />
 			<arg line="${qa.paths.pdepend}" />
 		</exec>
+
+		<if>
+			<isset property="qa.reports.pdepend" />
+			<then>
+				<exec
+					executable="/usr/bin/env"
+					checkreturn="false"
+					passthru="true"
+					output="${application.startdir}/build/jdepend.html">
+
+					<arg value="xsltproc" />
+					<arg line="${phing.dir.build}/xslt/${qa.reports.pdepend}.xslt" />
+					<arg line="${application.startdir}/build/jdepend.xml" />
+				</exec>
+			</then>
+		</if>
 	</target>
 
 	<target name="qa:phploc"
@@ -92,6 +124,22 @@
 			<arg line="--progress" />
 			<arg line="${qa.paths.phpcpd}" />
 		</exec>
+
+		<if>
+			<isset property="qa.reports.phpcpd" />
+			<then>
+				<exec
+					executable="/usr/bin/env"
+					checkreturn="false"
+					passthru="true"
+					output="${application.startdir}/build/phpcpd.html">
+
+					<arg value="xsltproc" />
+					<arg line="${phing.dir.build}/xslt/${qa.reports.phpcpd}.xslt" />
+					<arg line="${application.startdir}/build/phpcpd.xml" />
+				</exec>
+			</then>
+		</if>
 	</target>
 
 	<target name="qa:phpcs"
@@ -117,6 +165,22 @@
 			<arg line="--extensions=php" />
 			<arg line="${qa.paths.phpcs}" />
 		</exec>
+
+		<if>
+			<isset property="qa.reports.phpcs" />
+			<then>
+				<exec
+					executable="/usr/bin/env"
+					checkreturn="false"
+					passthru="true"
+					output="${application.startdir}/build/phpcs-checkstyle.html">
+
+					<arg value="xsltproc" />
+					<arg line="${phing.dir.build}/xslt/${qa.reports.phpcs}.xslt" />
+					<arg line="${application.startdir}/build/phpcs-checkstyle.xml" />
+				</exec>
+			</then>
+		</if>
 	</target>
 
 	<target name="qa:phpunit"
