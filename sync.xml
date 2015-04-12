@@ -9,7 +9,7 @@
 
 			<arg line="-p ${ssh.port}" />
 			<arg line="${ssh.user}@${ssh.host}" />
-			<arg line="'mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; ${remote.path}dump.sql.gz'" />
+			<arg line="'mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; ${remote.path}/dump.sql.gz'" />
 		</exec>
 
 		<exec

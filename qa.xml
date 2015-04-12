@@ -160,8 +160,7 @@
 			<arg line="--report=checkstyle" />
 			<arg line="--report-checkstyle=${application.startdir}/build/phpcs-checkstyle.xml" />
 			<arg line="--standard=TYPO3CMS" />
-			<arg line="--ignore=**/vendor/**" />
-			<arg line="-d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED'" />
+			<arg line="--ignore=**/vendor/**,**/ext_emconf.php,**/ext_localconf.php" />
 			<arg line="--extensions=php" />
 			<arg line="${qa.paths.phpcs}" />
 		</exec>
