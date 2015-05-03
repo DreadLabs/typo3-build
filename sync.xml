@@ -44,8 +44,8 @@
 			<arg line="--progress" />
 			<arg line="--rsh='ssh -p${ssh.port}'" />
 			<arg line="--exclude-from=${project.basedir}/rsync/file_sync_exclude.txt" />
-			<arg line="${ssh.user}@${ssh.host}:${remote.path}/fileadmin/" />
-			<arg line="${application.startdir}/data/web/fileadmin" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/web/fileadmin/" />
+			<arg line="${application.startdir}/data/web/fileadmin/" />
 		</exec>
 	</target>
 </project>
