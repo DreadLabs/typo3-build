@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f55c95d412a2654d5ea66f7cb010396f",
+    "hash": "479577d10ebd00e5706b879c0378d3b4",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1346,32 +1346,31 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "1.5.6",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5"
+                "reference": "e96d8579fbed0c95ecf2a0501ec4f307a4aa6404"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6f3e42d311b882b25b4d409d23a289f4d3b803d5",
-                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e96d8579fbed0c95ecf2a0501ec4f307a4aa6404",
+                "reference": "e96d8579fbed0c95ecf2a0501ec4f307a4aa6404",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
                 "php": ">=5.1.2"
             },
-            "suggest": {
-                "phpunit/php-timer": "dev-master"
-            },
             "bin": [
-                "scripts/phpcs"
+                "scripts/phpcs",
+                "scripts/phpcbf"
             ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-phpcs-fixer": "2.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -1380,12 +1379,12 @@
                     "CodeSniffer/CLI.php",
                     "CodeSniffer/Exception.php",
                     "CodeSniffer/File.php",
+                    "CodeSniffer/Fixer.php",
                     "CodeSniffer/Report.php",
                     "CodeSniffer/Reporting.php",
                     "CodeSniffer/Sniff.php",
                     "CodeSniffer/Tokens.php",
                     "CodeSniffer/Reports/",
-                    "CodeSniffer/CommentParser/",
                     "CodeSniffer/Tokenizers/",
                     "CodeSniffer/DocGenerators/",
                     "CodeSniffer/Standards/AbstractPatternSniff.php",
@@ -1411,13 +1410,13 @@
                     "role": "lead"
                 }
             ],
-            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
             "homepage": "http://www.squizlabs.com/php-codesniffer",
             "keywords": [
                 "phpcs",
                 "standards"
             ],
-            "time": "2014-12-04 22:32:15"
+            "time": "2015-04-28 23:28:20"
         },
         {
             "name": "symfony/config",
@@ -1781,23 +1780,23 @@
         },
         {
             "name": "typo3-ci/typo3cms",
-            "version": "6.2.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/typo3-ci/TYPO3CMS.git",
-                "reference": "dabdf37ffd63e8f418971acad1f7f9057e2be390"
+                "reference": "d59529dda8257223ab36a01543814f903173bfe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/typo3-ci/TYPO3CMS/zipball/dabdf37ffd63e8f418971acad1f7f9057e2be390",
-                "reference": "dabdf37ffd63e8f418971acad1f7f9057e2be390",
+                "url": "https://api.github.com/repos/typo3-ci/TYPO3CMS/zipball/d59529dda8257223ab36a01543814f903173bfe2",
+                "reference": "d59529dda8257223ab36a01543814f903173bfe2",
                 "shasum": ""
             },
             "require": {
-                "typo3-ci/typo3sniffpool": "~1.0"
+                "typo3-ci/typo3sniffpool": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3"
+                "phpunit/phpunit": "~4.6"
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -1827,32 +1826,32 @@
                 "standards",
                 "typo3"
             ],
-            "time": "2015-01-23 17:00:36"
+            "time": "2015-05-03 15:54:25"
         },
         {
             "name": "typo3-ci/typo3sniffpool",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/typo3-ci/TYPO3SniffPool.git",
-                "reference": "ac6fc11578b98f6b52c247a93facf8c1e5a22b1e"
+                "reference": "70e39068eae6f4474c995f77b87435abca1e8750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/typo3-ci/TYPO3SniffPool/zipball/ac6fc11578b98f6b52c247a93facf8c1e5a22b1e",
-                "reference": "ac6fc11578b98f6b52c247a93facf8c1e5a22b1e",
+                "url": "https://api.github.com/repos/typo3-ci/TYPO3SniffPool/zipball/70e39068eae6f4474c995f77b87435abca1e8750",
+                "reference": "70e39068eae6f4474c995f77b87435abca1e8750",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.1",
                 "simplyadmire/composer-plugins": "~1.0",
-                "squizlabs/php_codesniffer": "~1.5"
+                "squizlabs/php_codesniffer": "~2.3"
             },
             "replace": {
                 "typo3/codesniffer": "*"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.1.*"
+                "phpunit/phpunit": "~4.6"
             },
             "suggest": {
                 "typo3-ci/typo3cms": "The coding standard for TYPO3 CMS",
@@ -1861,7 +1860,8 @@
             "type": "phpcodesniffer-standard",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -1895,15 +1895,13 @@
                 "standards",
                 "typo3"
             ],
-            "time": "2015-01-23 16:24:57"
+            "time": "2015-05-03 15:25:19"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "phpmd/phpmd": 0
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

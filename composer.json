@@ -22,8 +22,8 @@
     "require" : {
         "php" : ">=5.5.0",
         "phing/phing" : "~2.10",
-        "phpunit/phpunit" : "~4.5",
-        "phpmd/phpmd" : "@stable",
+        "phpunit/phpunit" : "~4.6",
+        "phpmd/phpmd" : "~2.2",
         "pdepend/pdepend" : "~2.0",
         "phploc/phploc" : "~2.1",
         "sebastian/phpcpd" : "~2.0",
