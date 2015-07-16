@@ -71,7 +71,7 @@
 
 	<target name="main:run"
 			description="Runs the build process"
-			depends="qa:run, main:cleanup, typo3:run, main:copy-web-data, release:sync"
+			depends="qa:run, main:cleanup, typo3:run, main:copy-web-data"
 			if="environment">
 
 		<echo>Build finished.</echo>
