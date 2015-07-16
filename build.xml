@@ -7,7 +7,6 @@
 
 	<import file="${phing.dir.build}/typo3.xml" />
 	<import file="${phing.dir.build}/qa.xml" />
-	<import file="${phing.dir.build}/sync.xml" />
 
 	<target name="main:cleanup"
 			description="Cleans up the build directory">
