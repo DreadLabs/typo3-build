@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="qa" default="qa:run">
 
-	<target name="qa:prepare" unless="releasing">
+	<target name="qa:prepare">
 		<mkdir dir="${application.startdir}/build/phpunit-coverage" />
 	</target>
 
 	<target name="qa:phpmd"
 			description="Runs phpmd on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<fail unless="qa.paths.phpmd" message="[QA] {phpmd} Please specify qa.paths.phpmd in your main build file!" />
 
@@ -45,8 +44,7 @@
 
 	<target name="qa:pdepend"
 			description="Runs pdepend on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<fail unless="qa.paths.pdepend" message="[QA] {pdepend} Please specify qa.paths.pdepend in your main build file!" />
 
@@ -84,8 +82,7 @@
 
 	<target name="qa:phploc"
 			description="Runs phploc on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<fail unless="qa.paths.phploc" message="[QA] {phploc} Please specify qa.paths.phploc in your main build file!" />
 
@@ -106,8 +103,7 @@
 
 	<target name="qa:phpcpd"
 			description="Runs phpcpd on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<fail unless="qa.paths.phpcpd" message="[QA] {phpcpd} Please specify qa.paths.phpcpd in your main build file!" />
 
@@ -144,8 +140,7 @@
 
 	<target name="qa:phpcs"
 			description="Runs phpcs on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<fail unless="qa.paths.phpcs" message="[QA] {phpcs} Please specify qa.paths.phpcs in your main build file!" />
 
@@ -184,8 +179,7 @@
 
 	<target name="qa:phpunit"
 			description="Runs phpunit on web/typo3conf/ext/"
-			depends="qa:prepare"
-			unless="releasing">
+			depends="qa:prepare">
 
 		<exec
 			executable="/usr/bin/env"
@@ -200,8 +194,7 @@
 
 	<target name="qa:run"
 			description="Runs the QA toolchain"
-			depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit"
-			unless="releasing">
+			depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit">
 
 		<echo>QA toolchain ready.</echo>
 	</target>

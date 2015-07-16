@@ -2,8 +2,7 @@
 typo3-build
 ===========
 
-Encapsulates build targets in order to build and release a TYPO3.CMS
-project.
+Encapsulates build targets in order to build a TYPO3.CMS project.
 
 **Note**: these steps are very custom but necessary in order to have a
 clean composer structure within a TYPO3.CMS project.
@@ -53,8 +52,8 @@ Properties
 ~~~~~~~~~~
 
 In your project directory, you have to create a `build.[stage].properties` file. The
-**stage** value can be later addressed by specifying the `environment` and / or
-`release.target` properties while executing the build targets.
+**stage** value can be later addressed by specifying the `environment` property while
+executing the build targets.
 
 As a minimum, the following properties must be set:
 
@@ -95,16 +94,6 @@ Build
 
    ~ $ cd /vagrant
    ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
-
-Release
-~~~~~~~
-
-Currently only a rsync release process is implemented:
-
-.. code:: sh
-
-   ~ $ cd /vagrant
-   ~ $ php vendor/bin/phing release:run -Drelease.target=[test|prod]
 
 Syncing
 ~~~~~~~
@@ -157,15 +146,6 @@ ${distDir}/typo3conf/ext/.
 
 Use this, to run `grunt` or other things which should treat your project
 extension before distribution.
-
-release.run.postComposer
-........................
-
-This hook is executed during the release process right after the composer
-dependencies are installed.
-
-This is useful if you're using other package managers like `npm` or `bower` to
-allow installation of additional dependencies.
 
 Usage example
 .............

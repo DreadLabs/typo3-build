@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="build" default="main:run">
 	<property name="environment" value="dev" />
-	<property name="basic_auth.htaccess" value="#" />
 
 	<property file="${application.startdir}/build.${environment}.properties" />
 	<property file="${application.startdir}/build.${environment}.secret.properties" />
@@ -9,7 +8,6 @@
 	<import file="${phing.dir.build}/typo3.xml" />
 	<import file="${phing.dir.build}/qa.xml" />
 	<import file="${phing.dir.build}/sync.xml" />
-	<import file="${phing.dir.build}/release.xml" />
 
 	<target name="main:cleanup"
 			description="Cleans up the build directory">
@@ -38,10 +36,6 @@
 			description="Sets up Basic Auth protection"
 			if="useBasicAuth">
 
-		<loadfile
-			property="basic_auth.htaccess"
-			file="${application.startdir}/data/web/basic_auth.tpl.htaccess" />
-
 		<copy file="${application.startdir}/data/.tpl.htpasswd" tofile="./data/.htpasswd">
 			<filterchain>
 				<expandproperties />
@@ -65,7 +59,6 @@
 		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="${application.startdir}/data/web">
 				<include name="**/**" />
-				<exclude name="**/basic_auth.tpl.htaccess" />
 			</fileset>
 
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
