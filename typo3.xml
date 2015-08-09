@@ -11,15 +11,6 @@
 		<mkdir dir="${distDir}/uploads/pics" />
 	</target>
 
-	<target name="typo3:install-core"
-			description="Copies the TYPO3 core into the release directory."
-			depends="typo3:prepare">
-
-		<exec
-			dir="${distDir}"
-			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php ../composer.phar install --no-dev" />
-	</target>
-
 	<target name="typo3:configure-core"
 			description="Configures the core according to the configuration templates">
 
@@ -63,7 +54,7 @@
 
 	<target name="typo3:run"
 			description="Installs the TYPO3.CMS core + prepares extensions in the release directory."
-			depends="typo3:install-core, typo3:configure-core, typo3:project-extensions:prepare">
+			depends="typo3:configure-core, typo3:project-extensions:prepare">
 
 		<echo>TYPO3.CMS setup finished.</echo>
 	</target>

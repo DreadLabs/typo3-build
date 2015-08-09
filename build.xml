@@ -15,10 +15,7 @@
 
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
-				<include name="bin" />
-				<include name="Packages" />
 				<include name="typo3" />
-				<include name="typo3_src" />
 				<include name="typo3conf/AdditionalConfiguration.php" />
 				<include name="typo3conf/ENABLE_INSTALL_TOOL" />
 				<include name="typo3conf/LocalConfiguration.php" />
